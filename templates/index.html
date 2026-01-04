@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroCardio | Medical Grade AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="bg-grid"></div>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+
+    <nav class="navbar">
+        <div class="container nav-content">
+            <div class="logo">
+                <i class="fa-solid fa-heart-pulse logo-icon"></i>
+                <span>NeuroCardio<span class="dot">.</span>ai</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#features">Technology</a>
+                <a href="#diagnosis" class="btn-nav">Start Analysis</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section">
+        <div class="container hero-content">
+            <div class="hero-text" data-aos="fade-up">
+                <div class="badge">
+                    <i class="fa-solid fa-star"></i> Trusted by Doctors
+                </div>
+                <h1>Your Heart's <br><span class="gradient-text">Best Friend 🩺</span></h1>
+                <p>Use our AI to check your heart health in seconds. It's simple, secure, and medically accurate. Let's keep that heart smiling! 💓</p>
+                <div class="hero-btns">
+                    <button onclick="scrollToDiagnosis()" class="btn-primary">Start Checkup 🚀</button>
+                </div>
+            </div>
+            <div class="hero-visual" data-aos="fade-left">
+                <div class="visual-card">
+                    <div class="heart-animation">❤️</div>
+                    <div class="stat-row">
+                        <span>AI Confidence</span>
+                        <div class="stat-bar"><div class="fill" style="width: 98%"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Clinical Grade Technology</h2>
+                <p>Our platform aggregates three distinct ML models for superior reliability.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-box"><i class="fa-solid fa-layer-group"></i></div>
+                    <h3>Ensemble Voting</h3>
+                    <p>Combines Logistic Regression, Random Forest, and XGBoost using a stacking ensemble for robust predictions.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-box"><i class="fa-solid fa-bolt"></i></div>
+                    <h3>Real-time Analysis</h3>
+                    <p>Instant processing of 13 key physiological markers via optimized backend.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon-box"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3>Predictive Analytics</h3>
+                    <p>Identifies hidden patterns in Angina, ST Slope, and Fluoroscopy data.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="diagnosis" class="tool-section">
+        <div class="container">
+            
+            <div class="tool-wrapper" data-aos="zoom-in">
+                <div class="tool-sidebar">
+                    <h3>Diagnostic Steps</h3>
+                    <div class="progress-container">
+                        <div class="progress-step active" id="p-step-1">
+                            <div class="dot"></div>
+                            <span>Patient Profile</span>
+                        </div>
+                        <div class="line"></div>
+                        <div class="progress-step" id="p-step-2">
+                            <div class="dot"></div>
+                            <span>Vitals & Labs</span>
+                        </div>
+                        <div class="line"></div>
+                        <div class="progress-step" id="p-step-3">
+                            <div class="dot"></div>
+                            <span>Clinical Exams</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-content">
+                    <form id="aiForm" onsubmit="return false;">
+                        
+                        <div class="form-step active" id="step-1">
+                            <div class="step-title">
+                                <h4>Demographics</h4>
+                                <p>Basic patient identification data.</p>
+                            </div>
+                            <div class="grid-2">
+                                <div class="input-wrap">
+                                    <label>Patient Age</label>
+                                    <input type="number" id="age" placeholder="e.g. 45" required>
+                                </div>
+                                <div class="input-wrap">
+                                    <label>Biological Sex</label>
+                                    <select id="sex">
+                                        <option value="1">Male</option>
+                                        <option value="0">Female</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-footer right">
+                                <button class="btn-next" onclick="nextStep(2)">Continue <i class="fa-solid fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="form-step" id="step-2">
+                            <div class="step-title">
+                                <h4>Vitals & Blood Work</h4>
+                                <p>Key physiological measurements.</p>
+                            </div>
+                            <div class="grid-2">
+                                <div class="input-wrap">
+                                    <label>Resting BP (mm Hg)</label>
+                                    <input type="number" id="trestbps" placeholder="120">
+                                </div>
+                                <div class="input-wrap">
+                                    <label>Serum Cholesterol (mg/dl)</label>
+                                    <input type="number" id="chol" placeholder="200">
+                                </div>
+                                <div class="input-wrap">
+                                    <label>Max Heart Rate</label>
+                                    <input type="number" id="thalach" placeholder="150">
+                                </div>
+                                <div class="input-wrap">
+                                    <label>Fasting Blood Sugar > 120?</label>
+                                    <select id="fbs">
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-footer split">
+                                <button class="btn-back" onclick="prevStep(1)">Back</button>
+                                <button class="btn-next" onclick="nextStep(3)">Continue <i class="fa-solid fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="form-step" id="step-3">
+                            <div class="step-title">
+                                <h4>Clinical Evaluation</h4>
+                                <p>ECG and Stress Test parameters.</p>
+                            </div>
+                            
+                            <div class="grid-2">
+                                <div class="input-wrap">
+                                    <label>Chest Pain Type</label>
+                                    <select id="cp">
+                                        <option value="0">Typical Angina</option>
+                                        <option value="1">Atypical Angina</option>
+                                        <option value="2">Non-anginal Pain</option>
+                                        <option value="3">Asymptomatic</option>
+                                    </select>
+
+                                </div>
+                                <div class="input-wrap">
+                                    <label>Resting ECG Results</label>
+                                    <select id="restecg">
+                                        <option value="0">Normal</option>
+                                        <option value="1">ST-T Wave Abnormality</option>
+                                        <option value="2">Left Ventricular Hypertrophy</option>
+                                    </select>
+
+                                </div>
+                                <div class="input-wrap">
+                                    <label>Exercise Induced Angina</label>
+                                    <select id="exang">
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                </div>
+                                <div class="input-wrap">
+                                    <label>ST Depression (Oldpeak)</label>
+                                    <input type="number" step="0.1" id="oldpeak" placeholder="1.0">
+                                </div>
+                                <div class="input-wrap">
+                                    <label>ST Segment Slope</label>
+                                    <select id="slope">
+                                        <option value="0">Upsloping</option>
+                                        <option value="1">Flat</option>
+                                        <option value="2">Downsloping</option>
+                                    </select>
+
+
+
+                                </div>
+                                <div class="input-wrap">
+                                    <label>Major Vessels (Fluoroscopy)</label>
+                                    <select id="ca">
+                                        <option value="0">0 vessels</option>
+                                        <option value="1">1 vessel</option>
+                                        <option value="2">2 vessels</option>
+                                        <option value="3">3 vessels</option>
+                                    </select>
+
+
+                                </div>
+                                <div class="input-wrap full-width">
+                                    <label>Thalassemia</label>
+                                    <select id="thal">
+                                        <option value="3">Normal</option>
+                                        <option value="6">Fixed Defect</option>
+                                        <option value="7">Reversible Defect</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            
+                            <div class="form-footer split">
+                                <button class="btn-back" onclick="prevStep(2)">Back</button>
+                                <button class="btn-submit" onclick="submitData()">Run Analysis</button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                    <div id="result-panel" class="result-panel hidden">
+                        <div class="scan-line"></div>
+                        <div class="result-content">
+                            <div class="result-icon-box" id="res-icon">
+                                <i class="fa-solid fa-heart-pulse"></i>
+                            </div>
+                            <h2 id="res-title">Processing Data...</h2>
+                            
+                            <div class="meter-container">
+                                <div class="meter-bar">
+                                    <div id="meter-fill" class="meter-fill" style="width: 0%"></div>
+                                </div>
+                                <span id="res-percent">0%</span>
+                            </div>
+
+                            <p id="res-desc">Please wait while the ensemble model evaluates the biomarkers.</p>
+                            <button class="btn-primary btn-reset" onclick="resetTool()">Start New Analysis</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 NeuroCardio AI. Clinical Data Science.</p>
+            <div class="socials">
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+</body>
+</html>
